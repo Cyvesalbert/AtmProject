@@ -14,7 +14,7 @@ public class ATM {
  	// constants corresponding to main menu options
  	private static final int BALANCE_INQUIRY = 1; 
  	private static final int WITHDRAWAL = 2;
- 	private static final int DEPOSOSIT = 3;
+ 	private static final int DEPOSIT = 3;
  	private static final int EXIT = 4;
  	
  	// no argument atm constructor initialize instance variables
@@ -62,6 +62,69 @@ public class ATM {
  			screen.displayMessageLine("invalid account Number or PIN. Please try again");
  		}
  	}
+ 	
+ 	// display the main menu and perform transactions
+ 	private void performTransactions() {
+ 		Transaction currentTransaction = null; // local variable to store transaction currently being processed
+ 		boolean userExited = false; // user has not chosen to exit
+ 		
+ 		// loop while user has not choosen to exit system
+ 		while(!userExited) {
+ 			int mainMenuSelection = displayMainMenu(); // show main menu and get user selection 
+ 			
+ 			// decide how to proceed based on user's menu selection
+ 			switch(mainMenuSelection) {
+ 			// user chose to perform one of three transactions types
+ 				case BALANCE_INQUIRY:
+ 				case WITHDRAWAL:
+ 				case DEPOSIT:
+ 					currentTransaction = createTransaction(mainMenuSelection); //initialize as new object of chosen type
+ 					currentTarnsaction.execute(); // execute transaction
+ 					break;
+ 				case EXIT: // user chose to terminate session
+ 					screen.displayMessageLine("\nExixting the system...");
+ 					userExited = true; // this ATM session should end
+ 					break;
+ 				default: // user did not enter an integer from 1-4
+ 					screen.displayMessageLine("\nYou did not enter a valid selection. try again.");
+ 					break;
+ 			}
+ 		}
+ 		
+ 		//display the main menu and return an input selection
+ 		private int  displayMainMenu() {
+ 			screen.displayMessageLine("\nMain menu:");
+ 			screen.didplayMessageLine("1 - View Balance");
+ 			screen.displayMessageLine("2 - Withdraw cash");
+ 			screen.displayMessageLine("3 - Deposit funds");
+ 			screen.displayMessageLine("4 - Exit\n");
+ 			screen.displayMessageline("Enter a choice: ");
+ 			return keypad.getInput(); // return user's selection
+ 		}
+ 		
+ 		// return object of specified transaction subclass
+ 		private Transaction createTransaction(int type) {
+ 			
+ 			Transaction temp = null; // temporary Transaction variable
+ 			
+ 			switch(type) {
+ 				case BALANCE_INQUIRY: // create new balance inquiry transaction
+ 					temp = new BalanceInquiry(currentAccountNumber, screen, bankDatabase);
+ 					break;
+ 				case WITHDRAWAL: // create new withdrawal transaction
+ 					temp = new Withdrawal(currentAccountNumber, screen, bankDatabase, keypad, cashDispenser);
+ 					break;
+ 				case DEPOSIT: // create new deposit transaction
+ 					temp = new Deposit(currentAccountNumber, screen, bankDatabase, keypad, depositSlot);
+ 					break;
+ 					
+ 			}
+ 			
+ 			return temp; // return the newly created object
+ 		}
+ 		
+ 		
+ 	
 	
 	
 	
