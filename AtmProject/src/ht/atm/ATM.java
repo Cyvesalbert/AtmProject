@@ -79,7 +79,7 @@ public class ATM {
  				case WITHDRAWAL:
  				case DEPOSIT:
  					currentTransaction = createTransaction(mainMenuSelection); //initialize as new object of chosen type
- 					currentTarnsaction.execute(); // execute transaction
+ 					currentTransaction.execute(); // execute transaction
  					break;
  				case EXIT: // user chose to terminate session
  					screen.displayMessageLine("\nExixting the system...");
@@ -94,11 +94,11 @@ public class ATM {
  		//display the main menu and return an input selection
  		private int  displayMainMenu() {
  			screen.displayMessageLine("\nMain menu:");
- 			screen.didplayMessageLine("1 - View Balance");
+ 			screen.displayMessageLine("1 - View Balance");
  			screen.displayMessageLine("2 - Withdraw cash");
  			screen.displayMessageLine("3 - Deposit funds");
  			screen.displayMessageLine("4 - Exit\n");
- 			screen.displayMessageline("Enter a choice: ");
+ 			screen.displayMessageLine("Enter a choice: ");
  			return keypad.getInput(); // return user's selection
  		}
  		
