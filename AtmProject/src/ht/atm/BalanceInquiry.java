@@ -30,7 +30,7 @@ public class BalanceInquiry {
 	screen.displayDollarAmount( totalBalance );
 	screen.displayMessageLine( "" );
 	
-	}
+	}	
 }
 	
 
