@@ -1,7 +1,7 @@
 package ht.atm;
 
 // abstract superclass transaction represents an ATM transaction
-public class Transaction {
+public abstract class Transaction {
 	
 	private int accountNumber; // indicates account involved
 	private Screen screen; // ATM's screen
@@ -30,10 +30,8 @@ public class Transaction {
 		return bankDatabase;
 	}
 		
-	// perform the transaction (overriden by each superclass
+	// perform the transaction (overriden by each superclass)
 	abstract public void execute();
-	
-	
 	
 
 }

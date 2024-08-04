@@ -42,14 +42,14 @@ public class Withdrawal extends Transaction{
 			//check whether user chose a withdrawal amount or canceled
 			if(amount != CANCELED) {
 				// get available balance of account involved
-				availableBalance = bankDatabase.getAvailableBalance(getAcountNumber());
+				availableBalance = bankDatabase.getAvailableBalance(getAccount());
 				
 				// check whether the user has enough money in the account
 				if(amount <= availableBalance) {
 					// check whether the cash dispenser has enough money
 					if(cashDispenser.isSufficientCashAvailable(amount)) {
 						// update the account involved to reflect the withdrawal
-						bankDatabase.debit(getAccountNumber(), amount);
+						bankDatabase.debit(getAccount(), amount);
 						
 						cashDispenser.dispenseCash(amount); // dispense cash 
 						cashDispensed = true; // cash was dispensed
@@ -77,7 +77,7 @@ public class Withdrawal extends Transaction{
 		Screen screen = getScreen(); // get Screen reference
 		
 		// array of amounts to correspond to menu numbers
-		int[] amounts = {0, 20, 40, 100, 200};
+		int[] amounts = {0, 20, 40, 60, 100, 200};
 		
 		//loop while no valid choice has been made
 		while(userChoice == 0) {

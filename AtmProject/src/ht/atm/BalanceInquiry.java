@@ -1,7 +1,7 @@
 package ht.atm;
 
 // represents abalance inquiry ATM transaction
-public class BalanceInquiry {
+public class BalanceInquiry extends Transaction{
 
 	// balanceInquiry contructor
 	public BalanceInquiry(int userAccountNumber, Screen atmScreen, BankDatabase atmBankDatabase) {
@@ -16,10 +16,10 @@ public class BalanceInquiry {
 		Screen screen = getScreen();
 		
 		// get the available balance for the account involve
-		double availableBalance = bankDatabase.getAvailableBalance(getAccountNumber());
+		double availableBalance = bankDatabase.getAvailableBalance(getAccount());
 		
 		// get total balance for the account involve
-		double totalBalance = bankDatabase.getTotalBalance(getAccountNumber());
+		double totalBalance = bankDatabase.getTotalBalance(getAccount());
 	
 	
 	// display the balance information on the screen

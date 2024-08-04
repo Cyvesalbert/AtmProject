@@ -47,9 +47,9 @@ public class ATM {
  	
  	// attempts to authenticate user against database
  	public void authenticateUser() {
- 		screen.displayMesssage("\nPlease enter your account number: ");
- 		int accoutNumber = keypad.getInput(); // input account number
- 		screen.displayMessade("\nEnter your PIN: "); // prompt for PIN
+ 		screen.displayMessage("\nPlease enter your account number: ");
+ 		int accountNumber = keypad.getInput(); // input account number
+ 		screen.displayMessage("\nEnter your PIN: "); // prompt for PIN
  		int pin = keypad.getInput(); // input PIN
  		
  		// set userAuthenticated to boolean value returnde by database
@@ -90,6 +90,7 @@ public class ATM {
  					break;
  			}
  		}
+ 	}
  		
  		//display the main menu and return an input selection
  		private int  displayMainMenu() {
@@ -122,42 +123,6 @@ public class ATM {
  			
  			return temp; // return the newly created object
  		}
- 		
- 		
- 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }

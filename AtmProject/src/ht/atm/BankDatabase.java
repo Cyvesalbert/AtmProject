@@ -58,8 +58,5 @@ public class BankDatabase {
 		getAccount(userAccountNumber).debit(amount);
 	}
 	
-	
-	
-	
-	
+
 }

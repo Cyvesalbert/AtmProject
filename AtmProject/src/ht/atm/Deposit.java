@@ -29,7 +29,7 @@ public class Deposit extends Transaction{
 			screen.displayDollarAmount(amount);
 			screen.displayMessageLine(".");
 			 
-			boolean envelopeReceived = deposit.isEnvelopeReceived(); // receive deposit envelope
+			boolean envelopeReceived = depositSlot.isEnvelopeReceived(); // receive deposit envelope
 			
 			// chech wether deposit envelope was received 
 			if(envelopeReceived) {
@@ -37,7 +37,7 @@ public class Deposit extends Transaction{
 						"received.\nNOTE: The money just deposited will not " +
 						"be available until we verify the amount of any " +
 						"enclosed cash and your checks clear." );
-				bankDatabase.credit(getAccountNumber, amount); // credit account to reflect the deposit 
+				bankDatabase.credit(getAccount(), amount); // credit account to reflect the deposit 
 
 			}else { // deposit envelope not received
 				screen.displayMessageLine("\nyou did not insert an " + "envelope, so the ATM has cancelled your transaction" );
@@ -62,27 +62,6 @@ public class Deposit extends Transaction{
 			return (double) input / 100; // return dollar amount
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 }
